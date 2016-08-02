@@ -5,22 +5,26 @@
 {% endblock title %}
 
 {% block content %}
-  <div class="content">
-    <h1>{{ h1 }}</h1>
-    <hr />
-    <table>
-      <th>
-        <td>Province</td>
-        <td>Zip prefix</td>
-        <td>Locations</td>
-      </th>
-      {% for province in provinces %}
-        <tr>
-          <td>{{ province.name }}</td>
-          <td>{{ province.zip_prefix }}</td>
-          <td>{{ province.get_locations_list }}</td>
-        </tr>
+  <h1>{{ h1 }}</h1>
+  <hr />
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Province</th>
+        <th>Zip Prefix</th>
+        <th>Locations</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for province in provinces %}
+      <tr>
+        <th scope="row" class="text-muted"><small>{{ province.id }}</small></th>
+        <td>{{ province.name }}</td>
+        <td>{{ province.zip_prefix }}</td>
+        <td>{{ province.get_locations_list}}</td>
+      </tr>
     {% endfor %}
-    </table>
-  </div>
+    </tbody>
+  </table>
 {% endblock content %}

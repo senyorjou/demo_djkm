@@ -5,11 +5,16 @@
 {% endblock title %}
 
 {% block content %}
-  <div class="content">
-    <h1>{{ h1 }}</h1>
-    <p>{{ content }}</p>
-    <hr />
-    <p>There are {{ provinces }} provinces in the system</p>
-    <p>There are {{ locations }} locations in the system</p>
+  <div class="jumbotron">
+    <div class="container">
+      <h1>Welcome to DJKM</h1>
+      <p>Please feel free to navigate around</p>
+    </div>
+  </div>
+  <div class="well">
+    <h3>There are <span class="label label-default">{{ provinces }}</span> provinces in the system</h3>
+  </div>
+  <div class="well">
+    <h3>There are <span class="label label-default">{{ locations }}</span> locations in the system</h3>
   </div>
 {% endblock content %}
