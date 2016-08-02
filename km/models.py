@@ -11,6 +11,13 @@ class Province(models.Model):
     def __str__(self):
         return '%s - %s' % (self.zip_prefix, self.name)
 
+    def get_locations(self):
+        return Location.objects.filter(province=self)
+
+    def get_locations_list(self):
+        return ', '.join([l.name for l in
+                          Location.objects.filter(province=self)])
+
 
 class Location(models.Model):
     name = models.CharField(max_length=200, blank=False, null=False)
