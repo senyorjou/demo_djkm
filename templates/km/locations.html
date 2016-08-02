@@ -22,7 +22,7 @@
           <th scope="row" class="text-muted"><small>{{ location.id }}</small></th>
           <td>{{ location.name }}</td>
           <td>{{ location.zip_code }}</td>
-          <td>{{ location.province.name}}</td>
+          <td><a href="/provinces/{{ location.province.id }}">{{ location.province.name}}</a></td>
         </tr>
       {% endfor %}
       </tbody>

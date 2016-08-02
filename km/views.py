@@ -24,6 +24,16 @@ def provinces(request):
     }
     return render(request, 'km/provinces.html', ctx)
 
+
+def province(request, province_id):
+    ctx = {
+        'title': 'DJ KM v.0.1 - Locations',
+        'h1': 'Province',
+        'province': Province.objects.get(id=province_id)
+    }
+    return render(request, 'km/province.html', ctx)
+
+
 def locations(request):
     ctx = {
         'title': 'DJ KM v.0.1 - Locations',

@@ -20,7 +20,7 @@
     {% for province in provinces %}
       <tr>
         <th scope="row" class="text-muted"><small>{{ province.id }}</small></th>
-        <td>{{ province.name }}</td>
+        <td><a href="/provinces/{{ province.id }}">{{ province.name }}</a></td>
         <td>{{ province.zip_prefix }}</td>
         <td>{{ province.get_locations_list}}</td>
       </tr>
