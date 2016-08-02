@@ -1,0 +1,17 @@
+{% load staticfiles %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>{%block title %}{{ title }}{% endblock %}</title>
+  <meta name="description" content="A Django APP">
+  <meta name="author" content="Marc Jou">
+  <link rel="stylesheet" href="{% static 'css/reset.css' %}">
+  <!--<link rel="stylesheet" href="css/styles.css?v=1.0">-->
+</head>
+
+<body>
+  {% block content %}Main content{% endblock %}
+  <!--<script src="js/scripts.js"></script>-->
+</body>
+</html>

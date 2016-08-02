@@ -1,7 +1,10 @@
-# from django.shortcuts import render
-from django.http import HttpResponse
-
+from django.shortcuts import render
 
 def index(request):
-    print('Request >>>', request)
-    return HttpResponse("Hello, world. You're at the km index now.")
+    ctx = {
+        'title': 'DJ KM v.0.1',
+        'h1': 'This is the menu page',
+        'content': 'This is the menu page content',
+    }
+
+    return render(request, 'km/index.html', ctx)
