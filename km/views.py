@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.http import JsonResponse
 
 from km.models import Location, Province
 
@@ -10,7 +11,6 @@ def index(request):
         'content': 'This is the menu page content',
         'locations': Location.objects.count(),
         'provinces': Province.objects.count()
-
     }
 
     return render(request, 'km/index.html', ctx)
@@ -35,12 +35,20 @@ def province(request, province_id):
 
 
 def locations(request):
+    locs = Location.objects.all() \
+                           .order_by('province__name') \
+                           .order_by('name')
+
     ctx = {
         'title': 'DJ KM v.0.1 - Locations',
         'h1': 'List of locations',
-        'locations': Location.objects.all()\
-                                     .order_by('province__name')\
-                                     .order_by('name')
-
+        'locations': locs
     }
+
+    if request.META['CONTENT_TYPE'] == 'application/javascript':
+        json_data = [{'id': l.id, 'name': l.name, 'zip_code': l.zip_code}
+                     for l in locs]
+
+        return JsonResponse(json_data, safe=False)
+
     return render(request, 'km/locations.html', ctx)
