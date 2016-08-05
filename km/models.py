@@ -19,10 +19,42 @@ class Province(models.Model):
                           Location.objects.filter(province=self)])
 
 
+class Product(models.Model):
+    name = models.CharField(max_length=20, blank=False, null=False)
+
+    def __str__(self):
+        return self.name
+
+
 class Location(models.Model):
     name = models.CharField(max_length=200, blank=False, null=False)
     zip_code = models.CharField(max_length=5, blank=False, null=False)
     province = models.ForeignKey(Province)
+
+    def __str__(self):
+        return self.name
+
+
+class Business(models.Model):
+    name = models.CharField(max_length=50, blank=False, null=False)
+    website = models.CharField(max_length=100, blank=False, null=False)
+    location = models.ForeignKey(Location)
+
+    class Meta:
+        abstract = True
+
+
+class Customer(Business):
+    products = models.ManyToManyField(Product)
+
+    def __str__(self):
+        return 'Customer: ' + self.name
+
+
+class Provider(Business):
+
+    def __str__(self):
+        return 'Provider: ' + self.name
 
 
 @receiver(pre_save, sender=Location)

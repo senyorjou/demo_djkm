@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}
+  {{ title }}
+{% endblock title %}
+
+{% block content %}
+    <h1>{{ Customers }}</h1>
+    <hr />
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Website</th>
+          <th>Location</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for row in object_list %}
+        <tr>
+          <th scope="row" class="text-muted"><small>{{ row.id }}</small></th>
+          <td>{{ row.name }}</td>
+          <td>{{ row.website }}</td>
+          <td>{{ row.location.name}}</td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+{% endblock content %}

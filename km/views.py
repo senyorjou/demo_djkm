@@ -1,7 +1,20 @@
 from django.shortcuts import render
 from django.http import JsonResponse
+from django.views.generic import ListView, DetailView
 
-from km.models import Location, Province
+from km.models import Customer, Location, Product, Province
+
+
+class ProductList(ListView):
+    model = Product
+
+
+class ProductView(DetailView):
+    model = Product
+
+
+class CustomerList(ListView):
+    model = Customer
 
 
 def index(request):
